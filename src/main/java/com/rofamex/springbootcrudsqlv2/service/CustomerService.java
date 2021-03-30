@@ -18,13 +18,15 @@ public class CustomerService {
 	@Autowired
 	CustomerRepository customerRepository;
 
-	public void selectAll() {
+	public List<Customer> selectAll() {
 		List<Customer> customers = customerRepository.findAll();
 
 		for (Iterator<Customer> iterator = customers.iterator(); iterator.hasNext();) {
 			Customer customer = iterator.next();
 			LOG.info("customerId= {}, customerName = {}, customerAge = {}", customer.getId(), customer.getName(), customer.getAge());
 		}
+		
+		return customers;
 
 	}
 

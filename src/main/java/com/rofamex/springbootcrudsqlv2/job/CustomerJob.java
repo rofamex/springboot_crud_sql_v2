@@ -10,8 +10,10 @@ import org.springframework.stereotype.Component;
 
 import com.rofamex.springbootcrudsqlv2.service.CustomerService;
 
+/*
 @EnableAsync
 @Component
+*/
 public class CustomerJob {
 	private static final Logger LOG = LoggerFactory.getLogger(CustomerJob.class);
 
