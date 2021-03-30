@@ -9,7 +9,7 @@ with rest api
 
 ---SQL  
 -Spring Data JPA  
--MS SQL Server Drive  
+-MS SQL Server Driver  
 
 ---Web  
 -Spring Web  
