@@ -23,6 +23,6 @@ public class CustomerJob {
 	@Async
 	@Scheduled(fixedRateString = "10000", initialDelayString = "1000")
 	protected void selectAll() {
-		customerService.selectAll();
+		customerService.findAll();
 	}
 }

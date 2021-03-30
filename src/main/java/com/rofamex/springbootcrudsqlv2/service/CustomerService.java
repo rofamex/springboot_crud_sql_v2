@@ -2,6 +2,7 @@ package com.rofamex.springbootcrudsqlv2.service;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,16 +19,42 @@ public class CustomerService {
 	@Autowired
 	CustomerRepository customerRepository;
 
-	public List<Customer> selectAll() {
+	public List<Customer> findAll() {
+		return customerRepository.findAll();
+	}
+
+	public List<Customer> findAllConsole() {
 		List<Customer> customers = customerRepository.findAll();
 
 		for (Iterator<Customer> iterator = customers.iterator(); iterator.hasNext();) {
 			Customer customer = iterator.next();
-			LOG.info("customerId= {}, customerName = {}, customerAge = {}", customer.getId(), customer.getName(), customer.getAge());
+			LOG.debug("customerId= {}, customerName = {}, customerAge = {}", customer.getId(), customer.getName(), customer.getAge());
 		}
-		
-		return customers;
 
+		return customers;
+	}
+
+	public Optional<Customer> findById(Long id) {
+		return customerRepository.findById(id);
+	}
+
+	public void save(Customer customer) {
+		customerRepository.save(customer);
+	}
+
+	public void saveAll(List<Customer> customers) {
+		customerRepository.saveAll(customers);
+	}
+
+	public void deleteById(Long customersId) {
+		customerRepository.deleteById(customersId);
+	}
+
+	public void deleteByIds(List<Long> customersListIds) {
+		for (Iterator<Long> iterator = customersListIds.iterator(); iterator.hasNext();) {
+			Long id = iterator.next();
+			customerRepository.deleteById(id);
+		}
 	}
 
 }
