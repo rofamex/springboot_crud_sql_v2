@@ -49,7 +49,7 @@ public class CustomerController {
 		}
 	}
 
-	@PostMapping(value = "/saveAll", produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = "/saveAll", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<String> saveAll(@RequestBody String jsonString) {
 		JsonObject jsonMessage = new JsonObject();
 		String message;
@@ -70,7 +70,7 @@ public class CustomerController {
 		}
 	}
 
-	@PutMapping(value = "/updateById", produces = MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping(value = "/updateById", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<String> updateById(@RequestBody String jsonString) {
 		JsonObject jsonMessage = new JsonObject();
 		String message;
@@ -92,7 +92,7 @@ public class CustomerController {
 		}
 	}
 
-	@DeleteMapping(value = "/deleteById", produces = MediaType.APPLICATION_JSON_VALUE)
+	@DeleteMapping(value = "/deleteById", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<String> deleteById(@RequestBody String jsonString) {
 		JsonObject jsonMessage = new JsonObject();
 		String message;
@@ -114,7 +114,7 @@ public class CustomerController {
 		}
 	}
 
-	@DeleteMapping(value = "/deleteByIds", produces = MediaType.APPLICATION_JSON_VALUE)
+	@DeleteMapping(value = "/deleteByIds", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<String> deleteByIds(@RequestBody String jsonString) {
 		JsonObject jsonMessage = new JsonObject();
 		String message;
