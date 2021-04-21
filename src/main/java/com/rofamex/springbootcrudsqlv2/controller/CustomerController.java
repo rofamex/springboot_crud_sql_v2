@@ -6,7 +6,6 @@ import java.lang.reflect.Type;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,7 +24,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 import com.google.gson.reflect.TypeToken;
-import com.rofamex.springbootcrudsqlv2.dom.CustomerDetail;
 import com.rofamex.springbootcrudsqlv2.entity.Customer;
 import com.rofamex.springbootcrudsqlv2.service.CustomerService;
 import com.rofamex.springbootcrudsqlv2.service.IQuery.CustomerDetailService;
@@ -89,12 +87,28 @@ public class CustomerController {
 		}
 	}
 	
-	@GetMapping(value = "/findByJoiningTable", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/findByEntityManagerJpql", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<String> findByJoiningTable() {
 		JsonObject jsonMessage = new JsonObject();
 		String message;
 		try {
-			Collection<CustomerDetail> customers = customerDetailService.findByJoiningTable();
+			Collection<Customer> customers = customerDetailService.findByEntityManagerJpql();
+			JsonElement jsonElement = gson.toJsonTree(customers);
+
+			return ResponseEntity.status(HttpStatus.OK).body(jsonElement.toString());
+		} catch (Exception e) {
+			message = e.getMessage() + (isNull(e.getCause()) ? "" : e.getCause().getMessage());
+			jsonMessage.add("error", new JsonPrimitive(message));
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(jsonMessage.toString());
+		}
+	}
+	
+	@GetMapping(value = "/findByEntityManagerNativeQuery", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<String> findByEntityManagerNativeQuery() {
+		JsonObject jsonMessage = new JsonObject();
+		String message;
+		try {
+			Collection<Customer> customers = customerDetailService.findByEntityManagerNativeQuery();
 			JsonElement jsonElement = gson.toJsonTree(customers);
 
 			return ResponseEntity.status(HttpStatus.OK).body(jsonElement.toString());

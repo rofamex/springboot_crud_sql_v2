@@ -17,7 +17,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://127.0.0.1:8080/findAll",
+									"raw": "http://127.0.0.1:8080/customerApi/findAll",
 									"protocol": "http",
 									"host": [
 										"127",
@@ -27,7 +27,100 @@
 									],
 									"port": "8080",
 									"path": [
+										"customerApi",
 										"findAll"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "findByJpql",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8080/customerApi/findByJpql",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8080",
+									"path": [
+										"customerApi",
+										"findByJpql"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "findByNativeQuery",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8080/customerApi/findByNativeQuery",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8080",
+									"path": [
+										"customerApi",
+										"findByNativeQuery"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "findByEntityManagerJpql",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8080/customerApi/findByEntityManagerJpql",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8080",
+									"path": [
+										"customerApi",
+										"findByEntityManagerJpql"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "findByEntityManagerNativeQuery",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8080/customerApi/findByEntityManagerNativeQuery",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8080",
+									"path": [
+										"customerApi",
+										"findByEntityManagerNativeQuery"
 									]
 								}
 							},
@@ -48,7 +141,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://127.0.0.1:8080/saveAll",
+									"raw": "http://127.0.0.1:8080/customerApi/saveAll",
 									"protocol": "http",
 									"host": [
 										"127",
@@ -58,6 +151,7 @@
 									],
 									"port": "8080",
 									"path": [
+										"customerApi",
 										"saveAll"
 									]
 								}
@@ -79,7 +173,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://127.0.0.1:8080/saveAll",
+									"raw": "http://127.0.0.1:8080/customerApi/saveAll",
 									"protocol": "http",
 									"host": [
 										"127",
@@ -89,6 +183,7 @@
 									],
 									"port": "8080",
 									"path": [
+										"customerApi",
 										"saveAll"
 									]
 								}
@@ -110,7 +205,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://127.0.0.1:8080/updateById",
+									"raw": "http://127.0.0.1:8080/customerApi/updateById",
 									"protocol": "http",
 									"host": [
 										"127",
@@ -120,6 +215,7 @@
 									],
 									"port": "8080",
 									"path": [
+										"customerApi",
 										"updateById"
 									]
 								}
@@ -141,7 +237,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://127.0.0.1:8080/deleteById",
+									"raw": "http://127.0.0.1:8080/customerApi/deleteById",
 									"protocol": "http",
 									"host": [
 										"127",
@@ -151,6 +247,7 @@
 									],
 									"port": "8080",
 									"path": [
+										"customerApi",
 										"deleteById"
 									]
 								}
@@ -172,7 +269,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://127.0.0.1:8080/deleteByIds",
+									"raw": "http://127.0.0.1:8080/customerApi/deleteByIds",
 									"protocol": "http",
 									"host": [
 										"127",
@@ -182,6 +279,7 @@
 									],
 									"port": "8080",
 									"path": [
+										"customerApi",
 										"deleteByIds"
 									]
 								}
@@ -189,6 +287,28 @@
 							"response": []
 						}
 					]
+				},
+				{
+					"name": "execute",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8080/execute",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"execute"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
