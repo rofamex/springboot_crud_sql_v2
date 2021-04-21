@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
@@ -27,6 +28,7 @@ import com.rofamex.springbootcrudsqlv2.entity.Customer;
 import com.rofamex.springbootcrudsqlv2.service.CustomerService;
 
 @RestController
+@RequestMapping("/customerApi")
 public class CustomerController {
 	private static Gson gson = new Gson();
 
