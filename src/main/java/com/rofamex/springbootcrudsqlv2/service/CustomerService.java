@@ -1,5 +1,6 @@
 package com.rofamex.springbootcrudsqlv2.service;
 
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
@@ -21,6 +22,14 @@ public class CustomerService {
 
 	public List<Customer> findAll() {
 		return customerRepository.findAll();
+	}
+	
+	public Collection<Customer> findByJpql() {
+		return customerRepository.findByJpql();
+	}
+	
+	public Collection<Customer> findByNativeQuery() {
+		return customerRepository.findByNativeQuery();
 	}
 
 	public List<Customer> findAllConsole() {

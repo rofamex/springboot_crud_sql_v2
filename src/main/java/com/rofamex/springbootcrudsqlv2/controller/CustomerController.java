@@ -3,6 +3,7 @@ package com.rofamex.springbootcrudsqlv2.controller;
 import static java.util.Objects.isNull;
 
 import java.lang.reflect.Type;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -24,8 +25,10 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 import com.google.gson.reflect.TypeToken;
+import com.rofamex.springbootcrudsqlv2.dom.CustomerDetail;
 import com.rofamex.springbootcrudsqlv2.entity.Customer;
 import com.rofamex.springbootcrudsqlv2.service.CustomerService;
+import com.rofamex.springbootcrudsqlv2.service.IQuery.CustomerDetailService;
 
 @RestController
 @RequestMapping("/customerApi")
@@ -34,6 +37,9 @@ public class CustomerController {
 
 	@Autowired
 	CustomerService customerService;
+	
+	@Autowired
+	CustomerDetailService customerDetailService;
 
 	@GetMapping(value = "/findAll", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<String> findAll() {
@@ -41,6 +47,54 @@ public class CustomerController {
 		String message;
 		try {
 			List<Customer> customers = customerService.findAll();
+			JsonElement jsonElement = gson.toJsonTree(customers);
+
+			return ResponseEntity.status(HttpStatus.OK).body(jsonElement.toString());
+		} catch (Exception e) {
+			message = e.getMessage() + (isNull(e.getCause()) ? "" : e.getCause().getMessage());
+			jsonMessage.add("error", new JsonPrimitive(message));
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(jsonMessage.toString());
+		}
+	}
+	
+	@GetMapping(value = "/findByJpql", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<String> findByJpql() {
+		JsonObject jsonMessage = new JsonObject();
+		String message;
+		try {
+			Collection<Customer> customers = customerService.findByJpql();
+			JsonElement jsonElement = gson.toJsonTree(customers);
+
+			return ResponseEntity.status(HttpStatus.OK).body(jsonElement.toString());
+		} catch (Exception e) {
+			message = e.getMessage() + (isNull(e.getCause()) ? "" : e.getCause().getMessage());
+			jsonMessage.add("error", new JsonPrimitive(message));
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(jsonMessage.toString());
+		}
+	}
+	
+	@GetMapping(value = "/findByNativeQuery", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<String> findByNativeQuery() {
+		JsonObject jsonMessage = new JsonObject();
+		String message;
+		try {
+			Collection<Customer> customers = customerService.findByNativeQuery();
+			JsonElement jsonElement = gson.toJsonTree(customers);
+
+			return ResponseEntity.status(HttpStatus.OK).body(jsonElement.toString());
+		} catch (Exception e) {
+			message = e.getMessage() + (isNull(e.getCause()) ? "" : e.getCause().getMessage());
+			jsonMessage.add("error", new JsonPrimitive(message));
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(jsonMessage.toString());
+		}
+	}
+	
+	@GetMapping(value = "/findByJoiningTable", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<String> findByJoiningTable() {
+		JsonObject jsonMessage = new JsonObject();
+		String message;
+		try {
+			Collection<CustomerDetail> customers = customerDetailService.findByJoiningTable();
 			JsonElement jsonElement = gson.toJsonTree(customers);
 
 			return ResponseEntity.status(HttpStatus.OK).body(jsonElement.toString());
